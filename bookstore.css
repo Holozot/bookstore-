@@ -1,0 +1,460 @@
+/* Basic Resets & Global Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+}
+
+/* Header Styling */
+header {
+    background-color: #2e003e; 
+    color: #ecf0f1; /* Light grey */
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+header h1 {
+    margin-bottom: 5px;
+    font-size: 2.5em;
+}
+
+header p {
+    font-size: 1.1em;
+    opacity: 0.8;
+}
+
+/* Container for Two-Column Layout */
+.container {
+    display: flex; /* Enables flexbox for two-column layout */
+    max-width: 1200px; 
+    margin: 20px auto; 
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    position: relative; /* For positioning fixed sidebar within body */
+    min-height: 100vh; 
+}
+
+.sidebar {
+    width: 250px; /* Fixed width for sidebar */
+    background-color: #2e003e;
+    color: #ecf0f1;
+    padding: 20px;
+    border-right: 1px solid #b28dcf;
+
+    /* Fixed Positioning */
+    position: fixed; /* Keep sidebar in view */
+    top: 0; /* Align to the top */
+    left: 0;
+    height: 100vh; /* full height of viewport */
+    overflow-y: auto; /* Enable scrolling for long nav lists */
+    z-index: 1000; /* Stays on top of other content */
+    box-shadow: 2px 0 5px rgba(0,0,0,0.2); 
+}
+
+.sidebar h2 {
+    color: #ecf0f1;
+    margin-bottom: 15px;
+    font-size: 1.4em;
+    border-bottom: 1px solid rgba(236,240,241,0.2);
+    padding-bottom: 10px;
+}
+
+.sidebar ul {
+    list-style: none; /* No bullet points */
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: #ecf0f1;
+    padding: 8px 10px;
+    display: block; /* Make list items clickable */
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.sidebar ul li a:hover {
+    background-color: #a64ca6; /* Teal */
+    color: #fff;
+}
+
+/* Main Content Area Styling  */
+.content {
+    flex-grow: 1; /* Allows content to take up remaining space */
+    padding: 30px;
+    background-color: #ffffff;
+    margin-left: 250px; /* Push content to the right of the fixed sidebar */
+    width: calc(100% - 250px); /* Fill remaining width */
+    min-height: 100vh; 
+}
+
+.content section {
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px dashed #ddd;
+}
+
+.content section:last-child {
+    border-bottom: none; 
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.content h2 {
+    color: #4b0082; 
+    margin-bottom: 15px;
+    font-size: 2em;
+}
+
+/* --- Featured Books Section Styling--- */
+#top-featured-books {
+    background-color: #ece3f0; /* Light purple background */
+    padding: 25px;
+    border-radius: 8px;
+    margin-bottom: 40px;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+}
+
+#top-featured-books h2 {
+    color: #2e003e;
+    margin-bottom: 25px;
+    text-align: center; /* Keep title centered */
+}
+
+.featured-book-row {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; /* Center cards horizontally */
+    gap: 30px; /* Space between cards */
+}
+
+.featured-book-card {
+    width: 100%; 
+    max-width: 600px; 
+    display: flex;
+    flex-direction: row; /* Image on left, text block on right */
+    align-items: flex-start; 
+    gap: 20px; /* Space between image and text content */
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    text-align: left; /* Default text alignment */
+}
+
+.featured-book-card:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+}
+
+/* Wrapper for Title, Author, Description, Button in featured cards */
+.featured-text-content {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    flex-grow: 1; /* Allow text content to take up available space */
+    align-items: flex-start; /* Align text content to the left */
+}
+
+.featured-book-card h3 {
+    font-size: 1.2em;
+    margin-top: 0; /* Reset margin top */
+    margin-bottom: 5px;
+    color: #34495e;
+}
+
+.featured-book-card .author {
+    font-size: 0.9em;
+    color: #7f8c8d;
+    margin-bottom: 10px;
+}
+
+/* Book Cover Image Styling (Uniform Size for Featured and Regular) */
+.book-cover, .book-cover-fixed {
+    width: 150px; 
+    height: 225px; 
+    object-fit: cover; /* Ensures image covers the area without distortion */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    margin: 0; /* Reset previous margins */
+    flex-shrink: 0; /* Prevent the image from shrinking */
+}
+
+/* Specific styling for the additional content (hidden part of description) */
+.additional-content {
+    margin-top: 5px; 
+    font-size: 1.0em;
+    text-align: justify;
+    padding: 5px;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.hidden-content {
+    display: none; 
+}
+
+/* "Show More" Button Styling */
+.show-more-btn {
+    background-color: #8e44ad; 
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
+    margin-top: 10px; /* Space from description */
+}
+
+.show-more-btn:hover {
+    background-color: #a64ca6; 
+}
+
+/* General book item styling (for category sections) - Image on Left, Text on Right */
+.book-item {
+    display: flex;
+    flex-direction: row; 
+    align-items: flex-start; /* Align items to the top of the row */
+    gap: 20px;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px dotted #eee; /* Light separator for individual books */
+}
+
+.book-item:last-child {
+    border-bottom: none; /* No border for the last book in a category */
+}
+
+/* Wrapper for text content in general book items */
+.book-item-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    text-align: justify; 
+}
+
+.book-item h3 {
+    color: #2e003e; /* Darker heading for book titles */
+    margin-bottom: 5px;
+    font-size: 1.6em;
+}
+
+.book-item .author {
+    font-style: italic;
+    color: #7f8c8d; /* Grey */
+    margin-bottom: 10px;
+}
+
+.book-item p {
+    text-align: justify;
+    margin-bottom: 0; 
+}
+
+/* Newsletter Form Styling */
+.newsletter-signup {
+    background-color: #ecf0f1;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+}
+
+.newsletter-signup label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #2e003e;
+}
+
+.newsletter-signup input[type="email"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.newsletter-signup button[type="submit"] {
+    background-color: #2e003e;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease;
+}
+
+.newsletter-signup button[type="submit"]:hover {
+    background-color: #a64ca6;
+}
+
+.error-message {
+    color: #e74c3c;
+    font-size: 0.9em;
+    margin-top: -5px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+
+/* Footer Styling */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #2e003e;
+    color: #ecf0f1;
+    margin-top: 20px;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.2);
+}
+
+/* Contact Us Section Styling */
+.contact-us-section {
+    background-color: #ecf0f1;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+    margin-top: 40px;
+}
+
+.contact-us-section p {
+    margin-bottom: 8px;
+}
+
+.contact-us-section a {
+    color: #2980b9;
+    text-decoration: none;
+}
+
+.contact-us-section a:hover {
+    text-decoration: underline;
+}
+
+/* --- Responsive Design (Media Queries) --- */
+@media screen and (max-width: 768px) {
+    /* Adjustments for container on smaller screens */
+    .container {
+        flex-direction: column; /* Stack columns vertically */
+        margin: 10px;
+        box-shadow: none;
+    }
+
+    /* Sidebar - Adjust for smaller screens (no longer fixed) */
+    .sidebar {
+        position: static; /* No longer fixed on small screens */
+        width: 100%; /* Take full width */
+        height: auto; /* Auto height */
+        border-right: none;
+        border-bottom: 1px solid #2e003e;
+        padding-bottom: 15px;
+        box-shadow: none; 
+    }
+
+    .sidebar h2 {
+        text-align: center;
+    }
+
+    .sidebar ul {
+        display: flex; /* Make navigation items horizontal */
+        flex-wrap: wrap; /* wrap items*/
+        justify-content: center; /* Center items */
+        padding: 0;
+    }
+
+    .sidebar ul li {
+        margin: 5px;
+    }
+
+    .sidebar ul li a {
+        padding: 5px 10px;
+        font-size: 0.9em;
+    }
+
+    /* Main Content - Adjust for smaller screens */
+    .content {
+        margin-left: 0; 
+        width: 100%; 
+        padding: 20px 15px;
+    }
+
+    /* Featured Books Row on smaller screens */
+    .featured-book-row {
+        flex-direction: column; /* Stack featured cards vertically */
+        align-items: center; /* Center cards */
+    }
+
+    .featured-book-card {
+        flex-direction: column; /* Stack image and text content vertically on small screens */
+        align-items: center; 
+        text-align: center; 
+        flex: 0 0 90%;
+        max-width: 300px; /* Limit max width for readability */
+        margin-bottom: 20px; /* Space between stacked cards */
+    }
+
+    /* Revert order for stacked layout on small screens for featured cards */
+    .featured-book-card .book-cover-fixed {
+        order: initial;
+        margin-bottom: 15px; /* Add margin when stacked */
+    }
+
+    .featured-book-card .featured-text-content {
+        align-items: center; 
+        padding-right: 0; /* Remove padding when stacked */
+    }
+
+    .additional-content { 
+        order: initial;
+        width: auto; /* Revert width to auto if needed */
+        text-align: left; /* Keep justified text */
+    }
+
+    /* General book item adjustments (for category sections) on small screens */
+    .book-item {
+        flex-direction: column; /* Stack image and text vertically */
+        align-items: center; 
+        text-align: center; 
+        margin-bottom: 25px;
+    }
+
+    .book-item .book-cover {
+        margin-bottom: 15px; /* Add margin when stacked */
+    }
+
+    .book-item-content {
+        align-items: center; /* Center text content when stacked */
+    }
+
+    .book-item p {
+        text-align: center; /* Center text on small screens */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    header h1 {
+        font-size: 1.8em;
+    }
+
+    header p {
+        font-size: 0.9em;
+    }
+
+    .newsletter-signup input[type="email"],
+    .newsletter-signup button[type="submit"] {
+        font-size: 0.9em;
+        padding: 10px;
+    }
+}
